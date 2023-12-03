@@ -1,0 +1,262 @@
+<!--
+Name: Brandon Walton
+Prof: Krishna Vadrevu
+Class: CSC-2610
+Date: 12/3/2023
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="parking.js"></script>
+    <title>Geaux Park Dashboard</title>
+    <style>
+        [class^="col-"] {
+            border: 1px solid white;
+        }
+
+        .welcome-title h1 {
+            font-weight: bold;
+            background-color: rgb(80, 46, 129);
+            color: white;
+            margin-bottom: 20px;
+            /* Add margin to create space */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            /* Light purple background color */
+        }
+
+
+        .lot-container {
+            border: 5px solid rgba(204, 204, 204, 0.45);
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        .reservered-container {
+            border: 5px solid rgba(204, 204, 204, 0.45);
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        th,
+        td {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(80, 46, 129);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        th {
+            color: #502E81;
+        }
+
+        #parking-frame {
+            position: relative;
+            left: 0%;
+            width: 100%;
+            height: 442px;
+        }
+
+        .custom-header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-display: bold;
+            color: #fff;
+            /* White text color */
+            background-color: rgb(80, 46, 129);
+            /* Purple background color */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .custom-header th {
+            background-color: rgb(80, 46, 129);
+            color: #fff;
+        }
+
+        #sign-out {
+            position: relative;
+            left: 6%;
+            top: 0%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="welcome-title">
+                    <h1>Welcome, <%= user ? user.name : 'Guest' %>, to Geaux Park! <button id="sign-out"
+                                onclick="redirectSearch()">Availability</button>
+                            <button id="sign-out" onclick="redirectPage()">Sign Out</button>
+                    </h1>
+                </div>
+            </div>
+            <br></br>
+        </div>
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="lot-container">
+                    <table id="lot-table">
+                        <thead>
+                            <tr class="custom-header">
+                                <th>Lot Name</th>
+                                <th>Reserve</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>West Stadium Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bernie Moore Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Natatorium Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <td>Touchdown Village West Lot</td>
+                            <td>
+                                <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>Touchdown Village East Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>West Parker Blvd. Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <td>South Stadium East Lot</td>
+                            <td>
+                                <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>South Stadium West Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>South Quad Dr. West Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <td>Skip Bertman Dr. East Lot</td>
+                            <td>
+                                <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>East Parker Blvd. Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ECE West Lot</td>
+                                <td>
+                                    <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                                </td>
+                            </tr>
+                            <td>Parker Coliseum Lot</td>
+                            <td>
+                                <button class="reserve-btn" onclick="reserveLot(this)">reserve</button>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <div class="reservered-container">
+                    <div class="custom-header">
+                        <h2>Lots Reserved</h2>
+                    </div>
+                    <table id="reserved-table">
+                        <thead>
+                            <th>Parking Lot Name</th>
+                            <th>Parking Lot ID</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Ticket ID</th>
+                        </thead>
+                        <tbody>
+                            <% console.log("User Information: ", user); %>
+                        <% if (user && user.parkinglot) { %>
+                            <% user.parkinglot.forEach(parkinglot => { %>
+                                <tr>
+                                    <td><%= parkinglot.lotname %></td>
+                                    <td><%= parkinglot.id %></td>
+                                    <td><%= parkinglot.startTime %></td>
+                                    <td><%= parkinglot.endTime %></td>
+                                    <td><%= parkinglot.ticketID %></td>
+                                </tr>
+                            <% }); %>
+                        <% } else { %>
+                           
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br></br>
+        <div class="row">
+            <div class="col-xl-12">
+                <iframe id="parking-frame" src="https://www.lsu.edu/parking/availability.php"
+                width="715" height="750" frameborder="10" allowfullscreen></iframe> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const username = '<%= user && user.name %>';
+    const welcomeMessage = document.getElementById('welcome-message');
+    if (username) {
+
+        welcomeMessage.innerText = `Welcome, ${username} to Geaux Park!`;
+
+    }
+    function redirectPage() {
+        location.href = "login";
+    }
+    function redirectSearch() {
+        location.href = "availability";
+    }
+</script>

@@ -1,0 +1,118 @@
+<!--
+Name: Brandon Walton
+Prof: Krishna Vadrevu
+Class: CSC-2610
+Date: 12/3/2023
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lot Search</title>
+    <script src="parking.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5ebf9;
+            /* Light purple background color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #8a65a0;
+            /* Purple button color */
+            color: #fff;
+            /* White text color */
+            cursor: pointer;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            /* White table background color */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #8a65a0;
+            /* Purple header background color */
+            color: #fff;
+            /* White header text color */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <label for="lotName">Search by Lot:</label>
+        <input type="text" id="lotName" placeholder="Enter Lot Name">
+        <div class="button-container">
+            <button onclick="searchLot()">Search</button>
+            <br></br>
+            <button onclick="redirectHome()">Go Back</button>
+
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+    <table id="lotTable">
+        <!-- Table content will be inserted here dynamically -->
+    </table>
+
+
+
+    <script>
+        function redirectHome() {
+            location.href = "dashboard";
+        }
+    </script>
+</body>
+
+</html>
